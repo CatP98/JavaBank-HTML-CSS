@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaBank</title>
+    <link rel="stylesheet" href="templates/styles/style.css" type="text/css">
+</head>
+<body class="profile">
+
+<div class="profile-container">
+    <div class="profile-panel">
+        <a href="/javabank" class="btn go-back"><img src="assets/arrow-left.svg"/>Go back</a>
+        <div class="profile-header">
+            <div class="avatar"></div>
+            <div class="content">
+                <h2 th:text="${customer.firstName + ' ' + customer.lastName}">
+                    Customer Name
+                </h2>
+                <div class="btn-container">
+                    <a href="#" class="btn CTA">Edit</a>
+                    <a href="#" class="btn">Delete account</a>
+                </div>
+            </div>
+        </div>
+        <div class="details-container">
+            <article>
+                <h3>Personal details</h3>
+                <div class="details">
+                    <div class="card-detail">
+                        <h5>Phone number</h5>
+                        <h4 th:text="${customer.phone}">
+                            Customer Phone
+                        </h4>
+                    </div>
+                    <div class="card-detail">
+                        <h5>Email</h5>
+                        <h4 th:text="${customer.email}">
+                            Customer Email
+                        </h4>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <h3>Account info</h3>
+                <div class="details">
+                    <div class="card-detail">
+                        <h5>Number of accounts</h5>
+                        <h4 th:text="${customer.accounts.size()} + ' active accounts'">
+                            Number of Accounts
+                        </h4>
+                    </div>
+                    <div class="card-detail">
+                        <h5>Accounts total</h5>
+                        <h4 th:text="${customer.totalBalance} + ' €'">
+                            Total Balance
+                        </h4>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+    <div class="account-container">
+        <div class="header">
+            <h1>Accounts list</h1>
+            <div class="btn-container">
+                <a href="#" class="btn ghost hide-mobile">Manage accounts</a>
+                <a href="#" class="btn CTA">New account</a>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Balance</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="account : ${customer.accounts}">
+                <td></td>
+                <td th:text="${account.balance} + ' €'">
+                    Account Balance
+                </td>
+                <td>
+                    <div class="tag" th:class="${'basic-account'}">
+                            <span th:text="${account.accountType}">
+                                Account Type
+                            </span>
+                    </div>
+                </td>
+                <td>
+                    <div class="btn-container">
+                        <a href="#" class="btn">Deposit</a>
+                        <a href="#" class="btn">Withdraw</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+                <td>Total</td>
+                <td th:text="${customer.totalBalance} + ' €'">
+                    Total Balance
+                </td>
+                <td></td>
+                <td>
+                    <div class="btn-container">
+                        <a href="#" class="btn CTA">Withdraw all money</a>
+                    </div>
+                </td>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
