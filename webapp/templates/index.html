@@ -1,56 +1,194 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en"> 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>JavaBank: Home</title>
-  <link rel="stylesheet" href="templates/styles/style.css" type="text/css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Accounts</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sintony:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <link href="styles/stylesheet.css" rel="stylesheet">
 </head>
-<body class="homepage">
 
-<div class="container" th:fragment="customerList(customers)">
 
-  <div class="header">
-    <h1>Customer List</h1>
-    <a th:href="@{/add}" class="btn CTA">Add new</a>
-  </div>
+<body>
+    <header>
+        <div class="wrapper-header">
+            <div class="logo-name">
+                <a class="any-logo" href="../front-end/index.html" rel="home" title="BankForAll"> 
+                    <picture> 
+                        <source class="no-lazy" media="(min-width: 640px)" srcset="../assets/logoa.png">
+                        <img class="logo-pic" data-intro-logo="" src="../assets/logoa.png" alt="BankForAll logo" style="transform: translate(0px, 0px); opacity: 1;">
+                    </picture> 
+                    <span class="bank-for-all-name" style="transform: translate(0px, 0px); opacity: 1;">BankForAll</span>
+                </a>
+            </div>
+            <div class="navigation-options">
+                <nav>
+                    <ul class="nav-elements">
+                        <li><a href="#" >About</a></li>
+                        <li><a class="element-to-hide" href="custumer-details.html" >Profile</a></li>
+                        <li><a href="../front-end/index.html" >Accounts</a></li>
+                    </ul>
+                </nav>
+            </div>
 
-  <div class="card-container">
-    <div th:each="customer : ${customers}" class="card">
-      <div class="avatar"></div>
-      <div class="content">
-        <div class="card-header">
-          <div class="title">
-            <h2 th:text="${customer.firstName} + ' ' + ${customer.lastName}"></h2>
-          </div>
-          <div class="btn-container">
-            <a href="#" class="btn ghost">Edit</a>
-            <a th:href="@{'/profile?id=' + ${customer.id}}" class="btn">View account</a>
-          </div>
+            <div class="form-search">
+                <form action="#" method="get">
+                    <input id="input-bar" type="text" name="search"  /><br />
+                    <input id="search-button" type="submit" name="search" value="Search">
+                </form>
+            </div>
         </div>
-        <div class="card-details-container">
-          <div class="card-detail">
-            <h5>Phone number</h5>
-            <h4 th:text="${customer.phone}"></h4>
-          </div>
-          <div class="card-detail">
-            <h5>Email</h5>
-            <h4 th:text="${customer.email}"></h4>
-          </div>
-          <div class="card-detail">
-            <h5>Number of accounts</h5>
-            <h4 th:text="${#lists.size(customer.accounts)} + ' active accounts'"></h4>
-          </div>
-          <div class="card-detail">
-            <h5>Accounts total</h5>
-            <h4 th:text="${customer.totalBalance} + ' €'"></h4>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+    </header>
 
+    <main>
+        <div class="main-container-index">
+            
+            <button id="go-back-button" class="light" href="custumer-details.html">
+                <img class="cross-img" src="../src/main/webapp/assets/assets/chevron-left-regular-24.png"/>
+                <p class="go-back-txt">Go back</p>
+            </button>
+            <div class="header">
+                <h3 class="table-title">Customer list</h3>
+                <button class="dark" id="add-new-button">Add new</button>
+            </div>
+            <div class="customer-list">
+                <div class="customer-card">
+                    <img src="../src/main/webapp/assets/assets/user-profile.png" alt="Customer Photo" class="customer-photo">
+                    <div class="customer-info">
+                        <h2 class="name-index" class="name">Miguel Walters</h2>
+                        <div class="customer-details">
+                            <div class="phone-nb">
+                                <h5>Phone number</h5>
+                                <h4>+351 91 123 12 12</h4>
+                            </div>
+                            <div class="email">
+                                <h5>Email</h5>
+                                <h4>miguel.walters@gmail.com</h4>
+                            </div>
+                            <div class="nb-of-accounts">
+                                <h5>Number of accounts</h5>
+                                <h4>2 active accounts</h4>
+                            </div>
+                            <div class="accounts-total">
+                                <h5>Accounts total</h5>
+                                <h4>1250€</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="customer-actions">
+                        <button class="light">Edit</button>
+                        <button class="dark">View account</button>
+                    </div>
+                </div>
+                <div class="customer-card">
+                    <img src="../src/main/webapp/assets/assets/user-profile.png" alt="Customer Photo" class="customer-photo">
+                    <div class="customer-info">
+                        <h2 class="name-index" class="name">Miguel Walters</h2>
+                        <div class="customer-details">
+                            <div class="phone-nb">
+                                <h5>Phone number</h5>
+                                <h4>+351 91 123 12 12</h4>
+                            </div>
+                            <div class="email">
+                                <h5>Email</h5>
+                                <h4>miguel.walters@gmail.com</h4>
+                            </div>
+                            <div class="nb-of-accounts">
+                                <h5>Number of accounts</h5>
+                                <h4>2 active accounts</h4>
+                            </div>
+                            <div class="accounts-total">
+                                <h5>Accounts total</h5>
+                                <h4>1250€</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="customer-actions">
+                        <button class="light">Edit</button>
+                        <button class="dark">View account</button>
+                    </div>
+                </div>
+                <div class="customer-card">
+                    <img src="../src/main/webapp/assets/assets/user-profile.png" alt="Customer Photo" class="customer-photo">
+                    <div class="customer-info">
+                        <h2 class="name-index" class="name">Miguel Walters</h2>
+                        <div class="customer-details">
+                            <div class="phone-nb">
+                                <h5>Phone number</h5>
+                                <h4>+351 91 123 12 12</h4>
+                            </div>
+                            <div class="email">
+                                <h5>Email</h5>
+                                <h4>miguel.walters@gmail.com</h4>
+                            </div>
+                            <div class="nb-of-accounts">
+                                <h5>Number of accounts</h5>
+                                <h4>2 active accounts</h4>
+                            </div>
+                            <div class="accounts-total">
+                                <h5>Accounts total</h5>
+                                <h4>1250€</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="customer-actions">
+                        <button class="light">Edit</button>
+                        <button class="dark">View account</button>
+                    </div>
+                </div>
+                <div class="customer-card">
+                    <img src="../src/main/webapp/assets/assets/user-profile.png" alt="Customer Photo" class="customer-photo">
+                    <div class="customer-info">
+                        <h2 class="name-index" class="name">Miguel Walters</h2>
+                        <div class="customer-details">
+                            <div class="phone-nb">
+                                <h5>Phone number</h5>
+                                <h4>+351 91 123 12 12</h4>
+                            </div>
+                            <div class="email">
+                                <h5>Email</h5>
+                                <h4>miguel.walters@gmail.com</h4>
+                            </div>
+                            <div class="nb-of-accounts">
+                                <h5>Number of accounts</h5>
+                                <h4>2 active accounts</h4>
+                            </div>
+                            <div class="accounts-total">
+                                <h5>Accounts total</h5>
+                                <h4>1250€</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="customer-actions">
+                        <button class="light">Edit</button>
+                        <button class="dark">View account</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </main>
+
+    <footer>
+        <p>Unlocking Finantial Freedom, one Byte at a Time.</p>
+        <div class="contacts">
+            <p>Contact us:</p>
+            <div>
+                <p>Catarina Pestana</p>
+                <a href="mailto:catarinampestana@ua.pt">Email</a>
+            </div>
+            <div>
+                <p>David Vilaverde</p>
+                <a href="mailto:davidvilaverd@hotmail.com">Email</a>
+            </div>
+        </div>
+        <p>&copy; 2024 BankForAll</p>
+    </footer>
 </body>
 </html>
