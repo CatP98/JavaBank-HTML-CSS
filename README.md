@@ -4,17 +4,17 @@
 
 This project provides a basic web application for managing customer information. It includes pages for viewing a list of customers, adding new customers, viewing customer details, and handling cases where a user is not found. The application is styled with CSS and uses a simple directory structure for organizing HTML templates and assets.
 
-## Languages
+### Languages
 
 - **HTML**: Used for structuring the content of the web pages.
 - **CSS**: Used for styling the web pages and ensuring a consistent look and feel.
 
-## Frameworks and Libraries
+### Frameworks and Libraries
 
 - **Flexbox**: CSS layout module used for creating responsive web layouts.
 - **Google Fonts**: Used for custom fonts (e.g., Roboto).
 
-## Tools
+### Tools
 
 - **Apache HTTP Server**: Used for hosting the HTML pages.
 - **VS Code**: A code editor used for editing HTML and CSS files.
